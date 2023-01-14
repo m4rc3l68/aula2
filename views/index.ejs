@@ -14,14 +14,18 @@
           <td>Nome</td>
           <td>Idade</td>
           <td>Região</td>
+          <td>Uf</td>
           <td>Ações</td>
         </tr>
       </thead>
       <tbody>
-        <% customers.forEach(item => { %>
         <tr>
-          <%= item.name %> <%= item.idade %> <%= item.cidade %><%= item.uf %>
-          <%= item.ações %>
+          <% customers.forEach(item => { %>
+          <td><%= item.nome %></td>
+          <td><%= item.idade %></td>
+          <td><%= item.cidade %></td>
+          <td><%= item.uf %></td>
+          <td></td>
         </tr>
         <% }) %>
       </tbody>
