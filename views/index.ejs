@@ -8,10 +8,23 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <p><%= customers.length %> clientes cadastrados!</p>
-    <ul>
-      <% customers.forEach(item => { %>
-      <li><%= item.name %></li>
-      <% }) %>
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <td>Nome</td>
+          <td>Idade</td>
+          <td>Região</td>
+          <td>Ações</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% customers.forEach(item => { %>
+        <tr>
+          <%= item.name %> <%= item.idade %> <%= item.cidade %><%= item.uf %>
+          <%= item.ações %>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
   </body>
 </html>
