@@ -31,7 +31,14 @@
           <td><%= item.uf %></td>
           <td>
             <a href="/edit/<%= item._id %>" title="Editar">
-              <img src="/images/Edit.png" alt="NodeJS" />
+              <img src="/images/Edit.png" />
+            </a>
+            <a
+              href="/delete/<%= item._id %>"
+              title="Excluir"
+              onclick="return confirm('Tem certeza que deseja excluir este clienete?')"
+            >
+              <img src="/images/delete.png" />
             </a>
           </td>
         </tr>

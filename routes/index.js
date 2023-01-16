@@ -25,6 +25,13 @@ router.get('/edit/:customerId', (req, res) => {
     .catch((error) => console.log(error))
 })
 
+router.get('/delete/:customerId', (req, res) => {
+  const id = req.params.customerId
+  db.deleteCustomers(id)
+    .then((result) => res.redirect('/'))
+    .catch((error) => console.log(error))
+})
+
 router.post('/new', (req, res) => {
   if (!req.body.nome)
     return res.redirect('/new?error=O campo nome é obrigatório!')
