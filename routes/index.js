@@ -11,4 +11,8 @@ router.get('/', function (req, res, next) {
     .catch((error) => console.log(error))
 })
 
+router.get('/new', (req, res) => {
+  res.render('customers', { title: 'Cadastro de Clientes' })
+})
+
 module.exports = router
