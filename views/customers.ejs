@@ -6,23 +6,49 @@
   <body>
     <h1><%= title %></h1>
     <p>Preencha os campos abaixo para cadastrar um clienete:</p>
-    <form>
+    <form action="/new" method="POST">
       <fieldset>
-        <p>Nome: <input type="text" name="nome" /></p>
-        <p>Idade: <input type="number" name="idade" /></p>
         <p>
-          Região: <input type="text" name="cidade" />
-          <select name="uf">
+          Nome: <input type="text" name="nome" value="<%= customer.nome %>" />
+        </p>
+        <p>
+          Idade:
+          <input type="number" name="idade" value="<%= customer.idade %>" />
+        </p>
+        <p>
+          Região:
+          <input type="text" name="cidade" value="<%= customer.cidade %>" />
+          <select id="uf" name="uf" value="<%= customer.uf %>">
+            <option>Selecione a UF:</option>
             <option>RS</option>
             <option>SC</option>
             <option>PR</option>
+            <option>AL</option>
+            <option>RJ</option>
+            <option>SP</option>
           </select>
         </p>
+        <input type="hidden" name="id" value="<%= customer._id %>" />
         <p>
           <input type="submit" value="Salvar" />
           <a href="/">Cancelar</a>
         </p>
       </fieldset>
     </form>
+
+    <script>
+      if (window.location.search) {
+        const error = window.location.search.split('=')[1]
+        alert(decodeURI(error))
+      }
+
+      <%
+        if(customer.uf){
+          %>
+          document.getElementById("uf").value = "<%= customer.uf %>"
+          <%
+        }
+      %>
+    </script>
   </body>
 </html>

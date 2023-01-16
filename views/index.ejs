@@ -21,15 +21,24 @@
       <tbody>
         <tr>
           <% customers.forEach(item => { %>
-          <td><%= item.nome %></td>
+          <td>
+            <a href="/edit/<%= item._id %>" title="Editar">
+              <%= item.nome %>
+            </a>
+          </td>
           <td><%= item.idade %></td>
           <td><%= item.cidade %></td>
           <td><%= item.uf %></td>
-          <td></td>
+          <td>
+            <a href="/edit/<%= item._id %>" title="Editar">
+              <img src="/images/Edit.png" alt="NodeJS" />
+            </a>
+          </td>
         </tr>
         <% }) %>
       </tbody>
     </table>
+
     <hr />
     <a href="/new">Cadastrar Novo</a>
   </body>
