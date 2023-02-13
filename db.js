@@ -1,7 +1,7 @@
 const ObjectId = require('mongodb').ObjectId
 const mongoClient = require('mongodb').MongoClient
 mongoClient
-  .connect('mongodb://127.0.0.1:27017/', { useUnifiedTopology: true })
+  .connect(process.env.MONGODB_CONNECTION, { useUnifiedTopology: true })
 
   .then((connection) => {
     global.connection = connection.db('aula02')
