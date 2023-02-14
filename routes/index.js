@@ -6,9 +6,13 @@ const db = require('../db')
 router.get('/', function (req, res, next) {
   db.findCustomers()
     .then((customers) => {
-      res.render('index', { title: 'MongoDB', customers })
+      res.render('index', { title: 'Express', customers })
     })
     .catch((error) => console.log(error))
+  /* res.render('error', {
+    message: 'Não foi possível retornar os dados do cliente',
+    error,
+  }) */
 })
 
 router.get('/new', (req, res) => {
