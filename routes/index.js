@@ -8,11 +8,13 @@ router.get('/', function (req, res, next) {
     .then((customers) => {
       res.render('index', { title: 'Express', customers })
     })
-    .catch((error) => console.log(error))
-  /* res.render('error', {
-    message: 'Não foi possível retornar os dados do cliente',
-    error,
-  }) */
+    .catch((error) => {
+      console.log(error)
+      res.render('error', {
+        message: 'Não foi possível listar os clientes',
+        error,
+      })
+    })
 })
 
 router.get('/new', (req, res) => {
@@ -26,14 +28,26 @@ router.get('/edit/:customerId', (req, res) => {
     .then((customer) =>
       res.render('customers', { title: 'Edição de Cadastro', customer }),
     )
-    .catch((error) => console.log(error))
+    .catch((error) => {
+      console.log(error)
+      res.render('error', {
+        message: 'Não foi possível retornar os dados do cliente',
+        error,
+      })
+    })
 })
 
 router.get('/delete/:customerId', (req, res) => {
   const id = req.params.customerId
   db.deleteCustomers(id)
     .then((result) => res.redirect('/'))
-    .catch((error) => console.log(error))
+    .catch((error) => {
+      console.log(error)
+      res.render('error', {
+        message: 'Não foi possível excluir o cliente',
+        error,
+      })
+    })
 })
 
 router.post('/new', (req, res) => {
@@ -62,7 +76,11 @@ router.post('/new', (req, res) => {
       res.redirect('/')
     })
     .catch((error) => {
-      return console.log(error)
+      console.log(error)
+      res.render('error', {
+        message: 'Não foi possível salvar o cliente',
+        error,
+      })
     })
 })
 
