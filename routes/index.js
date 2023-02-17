@@ -10,10 +10,10 @@ router.get('/', function (req, res, next) {
     })
     .catch((error) => {
       console.log(error)
-      res.render('error', {
+      /* res.render('error', {
         message: 'Não foi possível listar os clientes',
-        error,
-      })
+        error: false,
+      }) */
     })
 })
 
@@ -30,10 +30,10 @@ router.get('/edit/:customerId', (req, res) => {
     )
     .catch((error) => {
       console.log(error)
-      res.render('error', {
+      /* res.render('error', {
         message: 'Não foi possível retornar os dados do cliente',
         error,
-      })
+      }) */
     })
 })
 
@@ -43,10 +43,10 @@ router.get('/delete/:customerId', (req, res) => {
     .then((result) => res.redirect('/'))
     .catch((error) => {
       console.log(error)
-      res.render('error', {
+      /* res.render('error', {
         message: 'Não foi possível excluir o cliente',
         error,
-      })
+      }) */
     })
 })
 
@@ -77,10 +77,10 @@ router.post('/new', (req, res) => {
     })
     .catch((error) => {
       console.log(error)
-      res.render('error', {
+      /* res.render('error', {
         message: 'Não foi possível salvar o cliente',
         error,
-      })
+      }) */
     })
 })
 

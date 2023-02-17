@@ -37,18 +37,38 @@
     </form>
 
     <script>
+      fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
+      .then(response => response.json())
+      .then(json => {
+        const ufsHTML = document.getElementById("uf")
+        const siglas = json.map(item => item.sigla).sort()
+        siglas.forEach(item => {
+          const opt = document.createElement("option")
+          opt.innerText = item.sigla
+          ufsHTML.add(opt)
+        });
+      })
+
+      <%
+        if(customer.uf){
+          %>
+          ufsHTML.value = "<%= customer.uf %>"
+          <%
+        }
+      %>
+
+      .catch(error => alert(error))
+
       if (window.location.search) {
         const error = window.location.search.split('=')[1]
         alert(decodeURI(error))
       }
 
-      <%
-        if(customer.uf){
-          %>
-          document.getElementById("uf").value = "<%= customer.uf %>"
-          <%
-        }
-      %>
+
+      /* fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(error => alert(error)) */
     </script>
   </body>
 </html>
