@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
       console.log(error)
       res.render('error', {
         message: 'Não foi possível listar os clientes',
-        error,
+        error: false,
       })
     })
 })
