@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require('../db')
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', (req, res, next) => {
   db.findCustomers()
     .then((customers) => {
       res.render('index', { title: 'Express', customers })
