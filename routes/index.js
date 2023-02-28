@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
     .catch((error) => {
       console.log(error)
       res.render('error', {
-        message: 'Não foi possível listar os clientes',
+        message: 'Não foi possível listar os clientes. A Conexão Caiu.',
         error: false,
       })
     })
