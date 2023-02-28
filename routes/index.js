@@ -11,7 +11,8 @@ router.get('/', (req, res, next) => {
     .catch((error) => {
       console.log(error)
       res.render('error', {
-        message: 'Não foi possível listar os clientes. A Conexão Caiu.',
+        message:
+          'Não foi possível listar os clientes. 👽Ops! Server 404 not found!',
         error: false,
       })
     })

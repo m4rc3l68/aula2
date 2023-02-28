@@ -3,7 +3,7 @@ const mongoClient = require('mongodb').MongoClient
 
 async function connectDatabase() {
   if (!global.connection)
-    mongoClient
+    await mongoClient
       .connect(process.env.MONGODB_CONNECTION, { useUnifiedTopology: true })
       .then((connection) => {
         global.connection = connection.db('aula02')
@@ -20,26 +20,26 @@ async function findCustomers() {
   return global.connection.collection('customers').find({}).toArray()
 }
 
-async function findCustomer(id) {
-  await connectDatabase()
+function findCustomer(id) {
+  connectDatabase()
   const objectId = new ObjectId(id)
   return global.connection.collection('customers').findOne({ _id: objectId })
 }
 
-async function insertCustomers(customers) {
-  await connectDatabase()
+function insertCustomers(customers) {
+  connectDatabase()
   return global.connection.collection('customers').insertOne(customers)
 }
 
-async function updateCustomers(id, customers) {
-  await connectDatabase()
+function updateCustomers(id, customers) {
+  connectDatabase()
   const objectId = new ObjectId(id)
   return global.connection
     .collection('customers')
     .updateOne({ _id: objectId }, { $set: customers })
 }
 
-async function deleteCustomers(id) {
+function deleteCustomers(id) {
   connectDatabase()
   const objectId = new ObjectId(id)
   return global.connection.collection('customers').deleteOne({ _id: objectId })
