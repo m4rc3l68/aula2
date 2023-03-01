@@ -20,15 +20,17 @@
           <input type="text" name="cidade" value="<%= customer.cidade %>" />
           <select id="uf" name="uf" value="<%= customer.uf %>">
             <option>Selecione a UF:</option>
-            <option>RS</option>
+            <!--  <option>RS</option>
             <option>SC</option>
             <option>PR</option>
             <option>AL</option>
             <option>RJ</option>
-            <option>SP</option>
+            <option>SP</option> -->
           </select>
         </p>
+
         <input type="hidden" name="id" value="<%= customer._id %>" />
+
         <p>
           <input type="submit" value="Salvar" />
           <a href="/">Cancelar</a>
@@ -37,7 +39,7 @@
     </form>
 
     <script>
-
+      /* fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados/{UF}/municipios") */
       fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
       .then(response => response.json())
       .then(json => {
