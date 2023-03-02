@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
       res.render('error', {
         message:
           'Não foi possível listar os clientes. 👽Ops! Server 404 not found!',
-        error,
+        error: '',
       })
     })
 })

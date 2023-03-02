@@ -16,17 +16,19 @@
           <input type="number" name="idade" value="<%= customer.idade %>" />
         </p>
         <p>
-          Região:
-          <input type="text" name="cidade" value="<%= customer.cidade %>" />
-          <select id="uf" name="uf" value="<%= customer.uf %>">
+          Estado:
+          <select id="uf" name="uf" value="<%= customer.uf %>" >
             <option>Selecione a UF:</option>
-            <!--  <option>RS</option>
-            <option>SC</option>
-            <option>PR</option>
-            <option>AL</option>
-            <option>RJ</option>
-            <option>SP</option> -->
           </select>
+        
+          Município:
+          <select type="text" name="cidade" value="<%= customer.cidade %>" >
+            <option>Selecione a Cidade</option>
+            <option>Água Branca</option>
+            <option>Maceió</option>
+            <option>Atalaia</option>
+            <option>Penedo</option>
+          </section>  
         </p>
 
         <input type="hidden" name="id" value="<%= customer._id %>" />
@@ -39,18 +41,20 @@
     </form>
 
     <script>
-      /* fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados/{UF}/municipios") */
+      // fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados/{UF}/municipios") 
+      // fetch("https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome")
       fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
       .then(response => response.json())
       .then(json => {
         const ufsHTML = document.getElementById("uf")
         const siglas = json.map(item => item.sigla).sort()
+ 
         siglas.forEach(item => {
           const opt = document.createElement("option")
           opt.innerText = item
           ufsHTML.add(opt)
         });
-
+ 
         <%
         if(customer.uf){
           %>
